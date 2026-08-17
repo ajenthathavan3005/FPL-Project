@@ -1,13 +1,24 @@
 import requests
 
-response = requests.get("https://fantasy.premierleague.com/api/bootstrap-static/")
+def getData(apiEndpoint):
+    response = requests.get(apiEndpoint)
+    data = response.json()
+    return data
 
-print(response.status_code)
+def getPlayerInfo(playerNameFirst, playerNameLast, data):
+    for player in data["elements"]:
+        if player["first_name"] == playerNameFirst and player["second_name"] == playerNameLast:
+            return player
 
-data = response.json()
 
+
+data = getData("https://fantasy.premierleague.com/api/bootstrap-static/")
 print(data.keys())
 
-print(type(data["elements"]))
-print(len(data["elements"]))
-print(data["elements"][0].keys())
+palmer = getPlayerInfo("Cole", "Palmer", data)
+
+print(palmer)
+print(palmer["goals_scored"])
+print(palmer["assists"])
+print(palmer["total_points"])
+    
