@@ -43,7 +43,13 @@ def comparePlayers(player1, player2):
         "total_points",
         "goals_scored",
         "assists",
-        "minutes"
+        "minutes",
+        "points_per_game",
+        "expected_goals",
+        "expected_assists",
+        "bonus",
+        "selected_by_percent",
+        "now_cost"
     ]
 
     player1_name = (
